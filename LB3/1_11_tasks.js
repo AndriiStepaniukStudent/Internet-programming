@@ -36,10 +36,10 @@ function createCounter() {
     let count = 0;
 
     return {
-        increment: function() {
+        increment: function () {
             count++;
         },
-        getValue: function() {
+        getValue: function () {
             return count;
         }
     };
@@ -48,7 +48,7 @@ function createCounter() {
 //5
 function getGreeting() {
     let lastCalled = '';
-    return function(name) {
+    return function (name) {
         if (name === lastCalled) {
             return `Hello ${name} (Cached)`;
         } else {
@@ -60,7 +60,7 @@ function getGreeting() {
 
 //6
 function makeAdder(x) {
-    return function(y) {
+    return function (y) {
         return x + y;
     };
 }
@@ -70,7 +70,7 @@ let add10 = makeAdder(10);
 
 //7
 function isIncludedInArray(arr) {
-    return function(text) {
+    return function (text) {
         return arr.includes(text);
     };
 }
@@ -85,13 +85,13 @@ let capitalizeNames = array => array.map(obj => ({ name: obj.name.charAt(0).toUp
 const personJohn = {
     firstName: 'John',
     lastName: 'Doe',
-    fullName: function() {
-      return this.firstName + ' ' + this.lastName;
+    fullName: function () {
+        return this.firstName + ' ' + this.lastName;
     }
-  };
-  
-  const fullName = personJohn.fullName.call(personJohn);
-  console.log(fullName);
+};
+
+const fullName = personJohn.fullName.call(personJohn);
+console.log(fullName);
 
 //apply
 const numbers = [1, 2, 3, 4, 5];
@@ -99,17 +99,17 @@ const max = Math.max.apply(null, numbers);
 console.log(max);
 
 //bind
-const greet = function() {
+const greet = function () {
     return `Привіт, ${this.name}!`;
-  };
-  
+};
+
 const person1 = { name: 'Анна' };
 const person2 = { name: 'Петро' };
 const greetPerson1 = greet.bind(person1);
 const greetPerson2 = greet.bind(person2);
-  
-  console.log(greetPerson1());
-  console.log(greetPerson2());
+
+console.log(greetPerson1());
+console.log(greetPerson2());
 
 //10
 function logFunctionCall(callback, ...args) {
@@ -124,7 +124,7 @@ function cacheLastCall(callback, timeout = 10000) {
     let lastCalledTime = 0;
     let lastResult = null;
 
-    return function(...args) {
+    return function (...args) {
         if (Date.now() - lastCalledTime < timeout) {
             console.log('Using cached result...');
             return lastResult;

@@ -34,10 +34,10 @@ function Person(name, surname, birthYear) {
     this.name = name;
     this.surname = surname;
     this.birthYear = birthYear;
-    this.getAge = function() {
+    this.getAge = function () {
         return new Date().getFullYear() - this.birthYear;
     };
-    this.getFullName = function() {
+    this.getFullName = function () {
         return `${this.name} ${this.surname}`;
     };
 }
@@ -51,7 +51,7 @@ function Employee(name, surname, birthYear, position) {
     Person.call(this, name, surname, birthYear);
     this.position = position;
     let parentGetFullName = this.getFullName;
-    this.getFullName = function() {
+    this.getFullName = function () {
         return `${parentGetFullName.call(this)} - ${this.position}`;
     };
 }
@@ -71,11 +71,11 @@ function ObservedPerson(person) {
     this.name = person.name;
     this.surname = person.surname;
     this.birthYear = person.birthYear;
-    this.getAge = function() {
+    this.getAge = function () {
         console.log('getAge was called.');
         return new Date().getFullYear() - this.birthYear;
     };
-    this.getFullName = function() {
+    this.getFullName = function () {
         console.log('getFullName was called.');
         return `${this.name} ${this.surname}`;
     };
